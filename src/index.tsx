@@ -188,7 +188,7 @@ class OutPortal<C extends Component<any>> extends React.PureComponent<OutPortalP
 
         const placeholder = this.placeholderNode.current!;
         const parent = placeholder.parentNode!;
-        node.mount(parent, placeholder);
+        if (this.props.node) node.mount(parent, placeholder);
         this.passPropsThroughPortal();
     }
 
@@ -205,13 +205,13 @@ class OutPortal<C extends Component<any>> extends React.PureComponent<OutPortalP
 
         const placeholder = this.placeholderNode.current!;
         const parent = placeholder.parentNode!;
-        node.mount(parent, placeholder);
+        if (this.props.node) node.mount(parent, placeholder);
         this.passPropsThroughPortal();
     }
 
     componentWillUnmount() {
         const node = this.props.node as AnyPortalNode<C>;
-        node.unmount(this.placeholderNode.current!);
+        if (this.props.node) node.unmount(this.placeholderNode.current!);
     }
 
     render() {
