@@ -179,7 +179,7 @@ class OutPortal<C extends Component<any>> extends React.PureComponent<OutPortalP
 
     passPropsThroughPortal() {
         const propsForTarget = Object.assign({}, this.props, { node: undefined });
-        this.props.node.setPortalProps(propsForTarget);
+        if (this.props.node) this.props.node.setPortalProps(propsForTarget);
     }
 
     componentDidMount() {
